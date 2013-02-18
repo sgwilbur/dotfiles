@@ -9,9 +9,10 @@ skip_files="README install.sh"
 
 for cur_file in *;
 do
+  link_source=`pwd`/${cur_file}
   link_target=~/.${cur_file}
 
-  echo "Working on link: ${link_target}"
+  echo "Working on: ${cur_file}"
 
   if [[ "${skip_files}" =~ "${cur_file}" ]] 
   then
@@ -19,14 +20,17 @@ do
     continue
   fi
 
+  echo "Going to create link in ~ to: ${link_target}"
 
-  if [ -x ${link_target} ]
+  if [ -e ${link_target} ]
   then
     echo "Link of file already exists!"
-    
-  else
-    ln -sf ${cur_file} ${link_target}
+    rm ${link_target}
+    echo "Removed old link."
+#  else
+#    ln -sf ${cur_file} ${link_target}
   fi
+    ln -sf ${link_source} ${link_target}
 
   echo $i
 done

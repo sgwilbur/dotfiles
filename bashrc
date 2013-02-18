@@ -14,6 +14,8 @@ fi
 ALIAS_USERID=2102
 alias ualias='wget -q -O - "$@" https://alias.sh/user/${ALIAS_USERID}/alias >> ~/.bash_aliases'
 
-
-
+# Source local aliases definitions
+if [ -f ~/.bash_aliases ]; then
+        . ~/.bash_aliases
+fi
 
