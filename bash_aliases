@@ -139,3 +139,5 @@ find . -name "$2" -exec grep -il "$1" {} \;
 }
 
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias halt="halt -p"
