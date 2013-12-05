@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Simple helper to install my dot files, when I am setting up new machines and vms.
 #
