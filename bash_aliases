@@ -1,5 +1,11 @@
 alias github="chrome \`git remote -v | grep github.com | grep fetch | head -1 | field 2 | sed 's/git:/http:/g'\`"
 
+alias gpom="git push origin master"
+alias gs="clear && git status"
+alias ga="git add"
+
+alias textmate="/Applications/TextMate.app/Contents/Resources/mate"
+
 function wikipedia() {
     if [ "${1}" ]; then dig + short +TXT "${1}".wp.dg.cx; fi
 }
@@ -141,3 +147,4 @@ find . -name "$2" -exec grep -il "$1" {} \;
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias halt="halt -p"
+
