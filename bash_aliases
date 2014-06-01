@@ -4,8 +4,6 @@ alias gpom="git push origin master"
 alias gs="clear && git status"
 alias ga="git add"
 
-alias textmate="/Applications/TextMate.app/Contents/Resources/mate"
-
 function wikipedia() {
     if [ "${1}" ]; then dig + short +TXT "${1}".wp.dg.cx; fi
 }
