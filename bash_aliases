@@ -47,20 +47,6 @@ b() {
 }
 
 
-# Create a file of xMbs
-cf() {
-    upload_file="upload_file.txt"
-    mbs=1048576
-    
-    if [ -n "$2" ]; then
-        upload_file="$2"
-    fi  
-
-    let size=`expr $mbs*$1`;
-    dd if=/dev/zero of="$upload_file" bs=$size count=1
-}
-
-
 alias clr='clear;pwd;ls'
 
 alias ll='ls -l --color=auto'
