@@ -34,3 +34,27 @@ do
 
   echo $i
 done
+
+
+# setup vim
+echo "Setting up local vim environment"
+mkdir -p ~/.vim/autoload ~/.vim/bundle 
+
+if [ ! -e ~/.vim/autoload/pathogen.vim ]
+then
+  echo "Installing pathogen to ~/.vim/autoload/pathogen.vim"
+ # https://github.com/tpope/vim-pathogen/
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
+fi
+
+# Plugins
+if [ ! -e ~/.vim/bundle/nerdtree ]
+then
+  echo "Installing NERDTree"
+  git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+else
+  echo "Checking NERDTree for updates"
+  cd ~/.vim/bundle/nerdtree && git pull origin master
+fi
+
+
