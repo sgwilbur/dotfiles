@@ -7,7 +7,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 if [[ ${platform} == 'Darwin' ]]; then
-	echo "Sourcing Mac bashisms..."
+#	echo "Sourcing Mac bashisms..."
        . ~/.bashrc_mac
 fi
 
@@ -28,7 +28,11 @@ fi
 # Turn off command not found on Ubuntu
 unset command_not_found_handle
 
-export HOMEBREW_GITHUB_API_TOKEN="4e1820f73a65add96e892e8156bcb93f0431deb0"
+export HOMEBREW_GITHUB_API_TOKEN="3dc3842eed765b631463f95d998bf918fdc8fb51"
+
+# Homebrew installs
+
+
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
