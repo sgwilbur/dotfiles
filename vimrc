@@ -37,5 +37,6 @@ syntax on
 " Change default colorscheme
 colo elflord
 
-
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
