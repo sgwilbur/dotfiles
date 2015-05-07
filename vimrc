@@ -34,6 +34,13 @@ set wrapmargin=8
 filetype plugin indent on
 syntax on
 
+" Fold on indent
+" http://vim.wikia.com/wiki/Folding
+augroup vimrc
+    au BufReadPre * setlocal foldmethod=indent
+    au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+
 " Change default colorscheme
 colo elflord
 

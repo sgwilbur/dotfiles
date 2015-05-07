@@ -48,13 +48,29 @@ then
 fi
 
 # Plugins
-if [ ! -e ~/.vim/bundle/nerdtree ]
-then
-  echo "Installing NERDTree"
-  git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-else
-  echo "Checking NERDTree for updates"
-  cd ~/.vim/bundle/nerdtree && git pull origin master
-fi
+# requires bash v4 to support associative arrays so some tom-foolery may
+# be required on OS X 10.10 at the time of writing this.
+vim_bundle_dir=~/.vim/bundle
 
+declare -A plugins
 
+plugins['nerdtree']='https://github.com/scrooloose/nerdtree.git'
+plugins['vim-nerdtree-tabs']='https://github.com/jistr/vim-nerdtree-tabs.git'
+
+for plugin_name in "${!plugins[@]}"
+do
+  plugin_dest="${vim_bundle_dir}/${plugin_name}"
+  plugin_git_url="${plugins[${plugin_name}]}"
+
+  if [ ! -d "${plugin_dest}" ]
+  then
+    echo "Installing ${plugin_name}"
+    echo "Calling  git clone '${plugin_git_url}' '${plugin_dest}'"
+
+    git clone "${plugin_git_url}" "${plugin_dest}"
+  else
+    echo "Checking ${plugin_name} for updates"
+    cd ${plugin_dest} && git pull origin master
+  fi
+
+done
