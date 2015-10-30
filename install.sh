@@ -7,14 +7,14 @@
 skip_files="README install.sh"
 
 
-for cur_file in *;
+for cur_file in "${PWD##*/}";
 do
   link_source=`pwd`/${cur_file}
   link_target=~/.${cur_file}
 
   echo "Working on: ${cur_file}"
 
-  if [[ "${skip_files}" =~ "${cur_file}" ]] 
+  if [[ "${skip_files}" =~ "${cur_file}" ]]
   then
 #    echo "Matched a skip file [${cur_file}] skipping..."
     continue
@@ -38,13 +38,13 @@ done
 
 # setup vim
 echo "Setting up local vim environment"
-mkdir -p ~/.vim/autoload ~/.vim/bundle 
+mkdir -p ~/.vim/autoload ~/.vim/bundle
 
 if [ ! -e ~/.vim/autoload/pathogen.vim ]
 then
   echo "Installing pathogen to ~/.vim/autoload/pathogen.vim"
  # https://github.com/tpope/vim-pathogen/
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
 # Plugins
@@ -56,6 +56,7 @@ declare -A plugins
 
 plugins['nerdtree']='https://github.com/scrooloose/nerdtree.git'
 plugins['vim-nerdtree-tabs']='https://github.com/jistr/vim-nerdtree-tabs.git'
+plugins['vim-ansible-yaml']='https://github.com/chase/vim-ansible-yaml.git'
 
 for plugin_name in "${!plugins[@]}"
 do

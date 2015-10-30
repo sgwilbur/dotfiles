@@ -28,7 +28,9 @@ set nocompatible
 set ruler
 set shiftwidth=2
 set tabstop=2
-set wrapmargin=8
+"set wrapmargin=8
+set wrapmargin=0
+set textwidth=0
 
 " Auto indenting and syntax
 filetype plugin indent on
@@ -47,3 +49,5 @@ colo elflord
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" show tabs
+set showtabline=2
