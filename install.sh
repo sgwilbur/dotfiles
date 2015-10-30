@@ -3,11 +3,11 @@
 # Simple helper to install my dot files, when I am setting up new machines and vms.
 #
 # @sgwilbur
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+skip_files="README install.sh .gitignore"
 
-skip_files="README install.sh"
-
-
-for cur_file in "${PWD##*/}";
+for cur_file in `ls $cwd`;
 do
   link_source=`pwd`/${cur_file}
   link_target=~/.${cur_file}
