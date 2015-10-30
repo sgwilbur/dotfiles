@@ -7,9 +7,9 @@
 cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 skip_files="README install.sh .gitignore"
 
-for cur_file in `ls $cwd`;
+for cur_file in `ls ${cwd}`;
 do
-  link_source=`pwd`/${cur_file}
+  link_source=${cwd}/${cur_file}
   link_target=~/.${cur_file}
 
   echo "Working on: ${cur_file}"
