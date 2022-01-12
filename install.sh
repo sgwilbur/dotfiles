@@ -35,43 +35,42 @@ do
   echo $i
 done
 
-
 # setup vim
-echo "Setting up local vim environment"
-mkdir -p ~/.vim/autoload ~/.vim/bundle
+# echo "Setting up local vim environment"
+# mkdir -p ~/.vim/autoload ~/.vim/bundle
 
-if [ ! -e ~/.vim/autoload/pathogen.vim ]
-then
-  echo "Installing pathogen to ~/.vim/autoload/pathogen.vim"
- # https://github.com/tpope/vim-pathogen/
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-fi
+# if [ ! -e ~/.vim/autoload/pathogen.vim ]
+# then
+#   echo "Installing pathogen to ~/.vim/autoload/pathogen.vim"
+#  # https://github.com/tpope/vim-pathogen/
+#   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+# fi
 
-# Plugins
-# requires bash v4 to support associative arrays so some tom-foolery may
-# be required on OS X 10.10 at the time of writing this.
-vim_bundle_dir=~/.vim/bundle
+# # Plugins
+# # requires bash v4 to support associative arrays so some tom-foolery may
+# # be required on OS X 10.10 at the time of writing this.
+# vim_bundle_dir=~/.vim/bundle
 
-declare -A plugins
+# declare -A plugins
 
-plugins['nerdtree']='https://github.com/scrooloose/nerdtree.git'
-plugins['vim-nerdtree-tabs']='https://github.com/jistr/vim-nerdtree-tabs.git'
-plugins['vim-ansible-yaml']='https://github.com/chase/vim-ansible-yaml.git'
+# plugins['nerdtree']='https://github.com/scrooloose/nerdtree.git'
+# plugins['vim-nerdtree-tabs']='https://github.com/jistr/vim-nerdtree-tabs.git'
+# plugins['vim-ansible-yaml']='https://github.com/chase/vim-ansible-yaml.git'
 
-for plugin_name in "${!plugins[@]}"
-do
-  plugin_dest="${vim_bundle_dir}/${plugin_name}"
-  plugin_git_url="${plugins[${plugin_name}]}"
+# for plugin_name in "${!plugins[@]}"
+# do
+#   plugin_dest="${vim_bundle_dir}/${plugin_name}"
+#   plugin_git_url="${plugins[${plugin_name}]}"
 
-  if [ ! -d "${plugin_dest}" ]
-  then
-    echo "Installing ${plugin_name}"
-    echo "Calling  git clone '${plugin_git_url}' '${plugin_dest}'"
+#   if [ ! -d "${plugin_dest}" ]
+#   then
+#     echo "Installing ${plugin_name}"
+#     echo "Calling  git clone '${plugin_git_url}' '${plugin_dest}'"
 
-    git clone "${plugin_git_url}" "${plugin_dest}"
-  else
-    echo "Checking ${plugin_name} for updates"
-    cd ${plugin_dest} && git pull origin master
-  fi
+#     git clone "${plugin_git_url}" "${plugin_dest}"
+#   else
+#     echo "Checking ${plugin_name} for updates"
+#     cd ${plugin_dest} && git pull origin master
+#   fi
 
-done
+# done

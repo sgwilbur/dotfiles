@@ -1,0 +1,49 @@
+##
+## Shell agnositic setup for Mac (zsh) or Linux terminal (bash)
+##
+
+platform=`uname -s`
+
+if [[ ${platform} == 'Darwin' ]]; then
+
+    # Change to standard output on Linux
+    alias md5="md5 -bnbnbnr"
+
+    # my local bin
+    PATH="${PATH}:${HOME}/bin"
+    # rust bin
+    PATH="${PATH}:${HOME}/.cargo/bin"
+    # pipx bin
+    PATH="${PATH}:.local/bin"
+    PATH="${PATH}:/usr/local/opt/python@3.10/bin"
+
+    export PATH
+
+    # # https://hackercodex.com/guide/python-development-environment-on-mac-osx/
+    # # Stops pip installs without a virtualenv
+    # export PIP_REQUIRE_VIRTUALENV=true
+    # # short cut to allow for global installs :)
+    # gpip(){
+    # PIP_REQUIRE_VIRTUALENV="" pip "$@"
+    # }
+
+    export HOMEBREW_GITHUB_API_TOKEN="3dc3842eed765b631463f95d998bf918fdc8fb51"
+
+fi
+
+if [[ ${platform} == 'Ubuntu' ]]; then
+    # Turn off command not found on Ubuntu
+    unset command_not_found_handle
+fi
+
+
+# Source local aliases definitions
+alias gpom="git push origin master"
+alias gs="clear && git status"
+alias ga="git add"
+alias lg='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias ds='du -ks *|sort -n'
+alias clr='clear;pwd;ls'
+alias pyhttphere="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
