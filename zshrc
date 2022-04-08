@@ -69,7 +69,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(ansible brew git golang pip poetry python rust terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -99,12 +99,27 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# 
+active_projects_dir="${HOME}/workspaces/active/"
+function active() { ls --almost-all ${active_projects_dir} } 
+function mark_active() { echo ${1:h} }
+function mark_inactive() { echo ${1:h} }
+
+# Then source configurations from active project(s)
+#for file in /path/to/directory/**/*(.); do echo $file; done
+
 source ${HOME}/.shrc
 
-export PATH="/usr/local/sbin:$PATH"
-alias python=/usr/local/bin/python3.9
 
+alias zshreload="source ~/.zshrc"
+
+# autocompletes
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# https://stackoverflow.com/questions/32057760/is-it-possible-to-not-share-history-between-panes-windows-in-tmux-with-zsh
+setopt nosharehistory
 

@@ -8,14 +8,20 @@ if [[ ${platform} == 'Darwin' ]]; then
 
     # Change to standard output on Linux
     alias md5="md5 -bnbnbnr"
+    alias python=/usr/local/bin/python3.9
 
     # my local bin
     PATH="${PATH}:${HOME}/bin"
+    # homebrew install bin
+    export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+    
+    PATH="/usr/local/opt/openjdk@8/bin:${PATH}"
+  
     # rust bin
-    PATH="${PATH}:${HOME}/.cargo/bin"
+    PATH="${HOME}/.cargo/bin:${PATH}"
     # pipx bin
-    PATH="${PATH}:.local/bin"
-    PATH="${PATH}:/usr/local/opt/python@3.10/bin"
+    PATH="${HOME}/.local/bin:${PATH}"
+    PATH="/usr/local/opt/python@3.10/bin:${PATH}"
 
     export PATH
 
@@ -27,7 +33,7 @@ if [[ ${platform} == 'Darwin' ]]; then
     # PIP_REQUIRE_VIRTUALENV="" pip "$@"
     # }
 
-    export HOMEBREW_GITHUB_API_TOKEN="3dc3842eed765b631463f95d998bf918fdc8fb51"
+    export HOMEBREW_GITHUB_API_TOKEN="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"
 
 fi
 
@@ -35,6 +41,11 @@ if [[ ${platform} == 'Ubuntu' ]]; then
     # Turn off command not found on Ubuntu
     unset command_not_found_handle
 fi
+
+# my working directories
+export PATH="~/bin:~/workspaces/migration-utils/bin:${PATH}"
+# homebrew install bin
+export PATH="/usr/local/sbin:${PATH}"
 
 
 # Source local aliases definitions
@@ -47,3 +58,5 @@ alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgree
 alias ds='du -ks *|sort -n'
 alias clr='clear;pwd;ls'
 alias pyhttphere="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+
+alias pyvenv="python -m venv env && source ./env/bin/activate"
