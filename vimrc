@@ -1,9 +1,6 @@
 " Set term so OS X can do syntax highlighting
 set term=builtin_xterm
 
-" Setup Pathogen @see https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
-
 " Disable arrow keys
 map <up> <nop>
 imap <up> <nop>
@@ -34,7 +31,7 @@ set textwidth=0
 
 " Auto indenting and syntax
 filetype plugin indent on
-syntax on
+"syntax on
 
 " Fold on indent
 " http://vim.wikia.com/wiki/Folding
@@ -42,12 +39,6 @@ augroup vimrc
     au BufReadPre * setlocal foldmethod=indent
     au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
-
-" Change default colorscheme
-colo elflord
-
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
 
 " show tabs
 set showtabline=2

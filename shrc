@@ -8,7 +8,7 @@ if [[ ${platform} == 'Darwin' ]]; then
 
     # Change to standard output on Linux
     alias md5="md5 -bnbnbnr"
-    alias python=/usr/local/bin/python3.9
+    #alias python=/usr/local/bin/python3.9
 
     # my local bin
     PATH="${PATH}:${HOME}/bin"
@@ -21,7 +21,11 @@ if [[ ${platform} == 'Darwin' ]]; then
     PATH="${HOME}/.cargo/bin:${PATH}"
     # pipx bin
     PATH="${HOME}/.local/bin:${PATH}"
-    PATH="/usr/local/opt/python@3.10/bin:${PATH}"
+    #PATH="/usr/local/opt/python@3.10/bin:${PATH}"
+
+
+    # export PATH="$HOME/.jenv/bin:$PATH"
+    # eval "$(jenv init -)"
 
     export PATH
 
