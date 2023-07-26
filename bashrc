@@ -6,7 +6,7 @@ fi
 
 # Source local definitions
 if [ -f ~/.bashrc_local ]; then
-        . ~/.bashrc_local
+  source ~/.bashrc_local
 fi
 
 source ${HOME}/.shrc
